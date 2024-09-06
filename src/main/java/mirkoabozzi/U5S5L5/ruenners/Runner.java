@@ -1,5 +1,6 @@
 package mirkoabozzi.U5S5L5.ruenners;
 
+import mirkoabozzi.U5S5L5.entities.Booking;
 import mirkoabozzi.U5S5L5.entities.Building;
 import mirkoabozzi.U5S5L5.entities.User;
 import mirkoabozzi.U5S5L5.entities.Workstation;
@@ -13,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Component
@@ -25,7 +27,6 @@ public class Runner implements CommandLineRunner {
     private WorkstationsService workstationsService;
     @Autowired
     private BookingsService bookingsService;
-
     @Autowired
     private ApplicationContext ctx;
 
@@ -54,5 +55,12 @@ public class Runner implements CommandLineRunner {
         } catch (ValidationException ex) {
             System.out.println(ex.getMessage());
         }
+
+        User userFromDb = usersService.findById(UUID.fromString("47709093-43ec-4d4f-82d7-a8144f3dc55a"));
+        Workstation workstationFromDB = workstationsService.findById(UUID.fromString("adff7f54-1a8f-498f-a663-4e265d02e381"));
+        Booking booking = new Booking(userFromDb, workstationFromDB, LocalDate.of(2024, 9, 6));
+//        bookingsService.saveBooking(booking);
+
+
     }
 }

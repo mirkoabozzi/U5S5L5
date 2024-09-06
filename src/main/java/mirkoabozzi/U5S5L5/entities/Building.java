@@ -1,14 +1,19 @@
 package mirkoabozzi.U5S5L5.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "buildings")
-@Data
+@Getter
+@Setter
+@ToString
+
 public class Building {
     @Id
     @GeneratedValue

@@ -32,4 +32,3 @@ public class BookingsService {
 
 
 }
-// & bookingsRepository.existsByUser(booking.getUser()

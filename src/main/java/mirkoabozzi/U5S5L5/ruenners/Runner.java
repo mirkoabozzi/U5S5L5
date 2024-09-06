@@ -4,6 +4,7 @@ import mirkoabozzi.U5S5L5.entities.Building;
 import mirkoabozzi.U5S5L5.entities.User;
 import mirkoabozzi.U5S5L5.entities.Workstation;
 import mirkoabozzi.U5S5L5.exceptions.ValidationException;
+import mirkoabozzi.U5S5L5.services.BookingsService;
 import mirkoabozzi.U5S5L5.services.BuildingsService;
 import mirkoabozzi.U5S5L5.services.UsersService;
 import mirkoabozzi.U5S5L5.services.WorkstationsService;
@@ -22,6 +23,8 @@ public class Runner implements CommandLineRunner {
     private BuildingsService buildingsService;
     @Autowired
     private WorkstationsService workstationsService;
+    @Autowired
+    private BookingsService bookingsService;
 
     @Autowired
     private ApplicationContext ctx;
@@ -30,13 +33,11 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Building building = (Building) ctx.getBean("getBuilding");
-//        buildingsService.saveBuilding(building);
 
         Building buildingDB = buildingsService.findById(UUID.fromString("24c7b583-3378-4d20-a167-19976b20819f"));
 
         Workstation workstation = (Workstation) ctx.getBean("getWorkstation");
         workstation.setBuilding(buildingDB);
-//        workstationsService.saveWorkstation(workstation);
 
         User mirko = new User("mirko.abozzi", "Mirko", "Abozzi", "mirko.abozzi@email.it");
         User giulia = new User("giulia.rossi", "Giulia", "Rossi", "giulia.rossi@email.it");
@@ -48,6 +49,8 @@ public class Runner implements CommandLineRunner {
 //            usersService.saveUser(giulia);
 //            usersService.saveUser(marco);
 //            usersService.saveUser(alessia);
+//            buildingsService.saveBuilding(building);
+//            workstationsService.saveWorkstation(workstation);
         } catch (ValidationException ex) {
             System.out.println(ex.getMessage());
         }

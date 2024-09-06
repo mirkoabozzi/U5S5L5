@@ -64,7 +64,8 @@ public class Runner implements CommandLineRunner {
         Booking booking3 = new Booking(marcoFromDb, workstationFromDB, LocalDate.of(2024, 9, 8));
 
 
-        workstationsService.findByType("OPENSPACE").forEach(System.out::println);
+//        workstationsService.findByType("OPENSPACE").forEach(System.out::println);
+        workstationsService.findWorkstationTypeAndCity("OPENSPACE", "Roma").forEach(System.out::println);
 
         try {
 //            usersService.saveUser(mirko);

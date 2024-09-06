@@ -32,4 +32,8 @@ public class WorkstationsService {
     public List<Workstation> findByType(String type) {
         return workstationRepository.findByWorkstationType(WorkstationType.valueOf(type));
     }
+
+    public List<Workstation> findWorkstationTypeAndCity(String type, String city) {
+        return workstationRepository.findByWorkstationTypeAndCity(WorkstationType.valueOf(type), city);
+    }
 }

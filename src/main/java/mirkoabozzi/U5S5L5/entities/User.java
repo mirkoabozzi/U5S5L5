@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,7 +11,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@ToString
+
 @Table(name = "users")
 public class User {
     @Id
@@ -24,7 +23,7 @@ public class User {
     private String surname;
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Booking> bookingList;
 
     public User() {
@@ -35,5 +34,16 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

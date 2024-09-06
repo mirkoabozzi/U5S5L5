@@ -3,7 +3,6 @@ package mirkoabozzi.U5S5L5.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,7 +11,7 @@ import java.util.UUID;
 @Table(name = "buildings")
 @Getter
 @Setter
-@ToString
+//@ToString
 
 public class Building {
     @Id
@@ -22,7 +21,7 @@ public class Building {
     private String address;
     private String city;
 
-    @OneToMany(mappedBy = "building")
+    @OneToMany(mappedBy = "building", fetch = FetchType.EAGER)
     private List<Workstation> workstationList;
 
     public Building() {

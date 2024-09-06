@@ -1,11 +1,13 @@
 package mirkoabozzi.U5S5L5.services;
 
+import mirkoabozzi.U5S5L5.WorkstationType;
 import mirkoabozzi.U5S5L5.entities.Workstation;
 import mirkoabozzi.U5S5L5.exceptions.NotFoundException;
 import mirkoabozzi.U5S5L5.repositories.WorkstationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,5 +27,9 @@ public class WorkstationsService {
     public void delete(UUID id) {
         workstationRepository.delete(this.findById(id));
         System.out.println("Workstation con id " + id + " eliminata");
+    }
+
+    public List<Workstation> findByType(String type) {
+        return workstationRepository.findByWorkstationType(WorkstationType.valueOf(type));
     }
 }

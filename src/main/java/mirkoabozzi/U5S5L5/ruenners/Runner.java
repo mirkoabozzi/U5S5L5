@@ -62,5 +62,7 @@ public class Runner implements CommandLineRunner {
 //        bookingsService.saveBooking(booking);
 
 
+        workstationsService.findByType("OPENSPACE").forEach(System.out::println);
+
     }
 }

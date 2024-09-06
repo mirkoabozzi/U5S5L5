@@ -3,7 +3,6 @@ package mirkoabozzi.U5S5L5.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -12,7 +11,7 @@ import java.util.UUID;
 @Table(name = "bookings")
 @Getter
 @Setter
-@ToString
+
 public class Booking {
     @Id
     @GeneratedValue
@@ -26,9 +25,22 @@ public class Booking {
     @Column(name = "booking_date")
     private LocalDate bookingDate;
 
+    public Booking() {
+    }
+
     public Booking(User user, Workstation workstation, LocalDate bookingDate) {
         this.user = user;
         this.workstation = workstation;
         this.bookingDate = bookingDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", user=" + user +
+//                ", workstation=" + workstation +
+                ", bookingDate=" + bookingDate +
+                '}';
     }
 }

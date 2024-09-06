@@ -3,7 +3,6 @@ package mirkoabozzi.U5S5L5.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import mirkoabozzi.U5S5L5.WorkstationType;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.UUID;
 @Table(name = "workstations")
 @Getter
 @Setter
-@ToString
+
 public class Workstation {
     @Id
     @GeneratedValue
@@ -23,7 +22,7 @@ public class Workstation {
     private WorkstationType workstationType;
     private Integer occupantsNumber;
 
-    @OneToMany(mappedBy = "workstation")
+    @OneToMany(mappedBy = "workstation", fetch = FetchType.EAGER)
     private List<Booking> bookingList;
 
     @ManyToOne
@@ -37,5 +36,16 @@ public class Workstation {
         this.description = description;
         this.workstationType = workstationType;
         this.occupantsNumber = occupantsNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Workstation{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", workstationType=" + workstationType +
+                ", occupantsNumber=" + occupantsNumber +
+                ", building=" + building +
+                '}';
     }
 }

@@ -33,4 +33,14 @@ public class Building {
         this.city = city;
         this.workstationList = workstationList;
     }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
